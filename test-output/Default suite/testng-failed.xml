@@ -5,8 +5,8 @@
     <classes>
       <class name="com.api.httptests.HttpgetmethodTest">
         <methods>
+          <include name="validatepostuserdetails"/>
           <include name="setup"/>
-          <include name="httpgettest"/>
         </methods>
       </class> <!-- com.api.httptests.HttpgetmethodTest -->
     </classes>

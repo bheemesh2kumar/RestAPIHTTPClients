@@ -5,7 +5,8 @@
 		<classes>
 			<class name="com.api.httptests.HttpgetmethodTest">
 				<methods>
-					<exclude name="httpgettest"></exclude>
+					<include name="validatepostuserdetails">
+					</include>
 				</methods>
 			</class>
 		</classes>

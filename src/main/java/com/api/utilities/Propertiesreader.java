@@ -30,4 +30,10 @@ public class Propertiesreader
 		return uri;
 	}
 
+	public String getposturi() {
+		String uri = prop.getProperty("postdomainurl") + prop.getProperty("postserviceurl");
+
+		return uri;
+	}
+
 }
