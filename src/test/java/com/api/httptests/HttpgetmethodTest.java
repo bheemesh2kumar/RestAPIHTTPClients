@@ -1,5 +1,6 @@
 package com.api.httptests;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
+import com.api.pojos.PostUsers;
 import com.api.utilities.Propertiesreader;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class HttpgetmethodTest extends BaseClass {
 
@@ -82,7 +87,7 @@ public class HttpgetmethodTest extends BaseClass {
 
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void validatepostuserdetails() throws ClientProtocolException, IOException {
 		String uri = Propertiesreaderref.getposturi();
 
@@ -107,6 +112,60 @@ public class HttpgetmethodTest extends BaseClass {
 
 		JSONObject JSONObjectref = new JSONObject(jsonresponseentity);
 		System.out.println(JSONObjectref);
+
+	}
+
+	@Test
+	public void validatepostmethodusingpojostyle() throws JsonGenerationException, JsonMappingException, IOException {
+
+		String uri = Propertiesreaderref.getposturi();
+
+		HashMap<String, String> headermap = new HashMap<String, String>();
+		headermap.put("Content-Type", "application/json");
+		headermap.put("Accept", "application/json");
+
+		PostUsers PostUsersref = new PostUsers();
+		PostUsersref.setEmail("eve.holt@reqres.in");
+		PostUsersref.setPassword("pistol");
+
+		ObjectMapper ObjectMapperref = new ObjectMapper();
+
+		ObjectMapperref.writeValue(new File("./Jsonfiles//postjson.json"), PostUsersref);
+
+		String jsonrequestentity = ObjectMapperref.writeValueAsString(PostUsersref);
+
+		System.out.println("***********" + jsonrequestentity);
+
+		CloseableHttpResponse response = Httpmethodsref.postmethodwithheaders(uri, jsonrequestentity, headermap);
+
+		System.out.println("status code" + response.getStatusLine().getStatusCode());
+		System.out.println("reason pharse" + response.getStatusLine().getReasonPhrase());
+
+		Header[] headerarry = response.getAllHeaders();
+
+		HashMap<String, String> mapheaders = new HashMap<String, String>();
+
+		for (Header header : headerarry) {
+			mapheaders.put(header.getName(), header.getValue());
+		}
+
+		System.out.println("reasponse headers are displayed below");
+
+		for (Map.Entry<String, String> entry : mapheaders.entrySet()) {
+			System.out.println(entry.getKey() + ": " + entry.getValue());
+		}
+
+		String jsonresponseentry = EntityUtils.toString(response.getEntity(), "UTF-8");
+
+		JSONObject JSONObjectref = new JSONObject(jsonresponseentry);
+
+		System.out.println("Responsejosn file" + JSONObjectref);
+
+		PostUsers PostUsersresobj = ObjectMapperref.readValue(jsonresponseentry, PostUsers.class);
+
+		System.out.println(PostUsersresobj.getId());
+
+		System.out.println(PostUsersresobj.getToken());
 
 	}
 

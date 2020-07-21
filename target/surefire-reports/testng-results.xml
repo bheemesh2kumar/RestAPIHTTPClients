@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
+<testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="3130" started-at="2020-07-18T23:58:38 IST" finished-at="2020-07-18T23:58:41 IST">
+  <suite name="Suite" duration-ms="1709" started-at="2020-07-19T22:44:29 IST" finished-at="2020-07-19T22:44:31 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="3130" started-at="2020-07-18T23:58:38 IST" finished-at="2020-07-18T23:58:41 IST">
+    <test name="Test" duration-ms="1709" started-at="2020-07-19T22:44:29 IST" finished-at="2020-07-19T22:44:31 IST">
       <class name="com.api.httptests.HttpgetmethodTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.api.httptests.HttpgetmethodTest@5419f379]" name="setup" is-config="true" duration-ms="46" started-at="2020-07-18T23:58:38 IST" finished-at="2020-07-18T23:58:38 IST">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.api.httptests.HttpgetmethodTest@d2cc05a]" name="setup" is-config="true" duration-ms="59" started-at="2020-07-19T22:44:29 IST" finished-at="2020-07-19T22:44:29 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="validateapiwitheaders()[pri:0, instance:com.api.httptests.HttpgetmethodTest@5419f379]" name="validateapiwitheaders" duration-ms="2985" started-at="2020-07-18T23:58:38 IST" finished-at="2020-07-18T23:58:41 IST">
+        <test-method status="PASS" signature="validatepostuserdetails()[pri:0, instance:com.api.httptests.HttpgetmethodTest@d2cc05a]" name="validatepostuserdetails" duration-ms="1564" started-at="2020-07-19T22:44:29 IST" finished-at="2020-07-19T22:44:31 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateapiwitheaders -->
+        </test-method> <!-- validatepostuserdetails -->
       </class> <!-- com.api.httptests.HttpgetmethodTest -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->

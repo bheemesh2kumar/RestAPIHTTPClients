@@ -5,7 +5,7 @@
 		<classes>
 			<class name="com.api.httptests.HttpgetmethodTest">
 				<methods>
-					<include name="validatepostuserdetails">
+					<include name="validatepostmethodusingpojostyle">
 					</include>
 				</methods>
 			</class>
